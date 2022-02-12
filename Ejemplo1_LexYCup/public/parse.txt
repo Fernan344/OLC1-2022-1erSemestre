@@ -1,0 +1,6 @@
+Evaluar[1+1.555555555];
+Evaluar[1+1*2];
+Evaluar[-(1+1*6/3-5+7)];
+Evaluar[-(1+1*6/3-5+1*-2)];
+Evaluar[-(1+1)];
+Evaluar[5*6];
