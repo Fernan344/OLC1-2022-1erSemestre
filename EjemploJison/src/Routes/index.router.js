@@ -2,6 +2,6 @@ const express = require("express")
 const router = express.Router();
 const control = require("../Controllers/index.controller")
 
-router.get("/", control.index)
+router.post("/root", control.index)
 
 module.exports = router;
