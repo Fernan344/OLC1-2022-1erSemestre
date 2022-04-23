@@ -1,7 +1,8 @@
 %{
 //codigo js
 const inicio = require('../../controllers/indexControllers');
-const operacion = require('./expresiones/Operacion');
+const nativo = require('./expresiones/Nativo');
+const aritmetico = require('./expresiones/Aritmetico');
 const Tipo = require('./simbolo/Tipo');
 const impresion = require('./instrucciones/Imprimir');
 const declaracion = require('./instrucciones/Declaracion')
@@ -70,9 +71,9 @@ DECLARACION:
 IMPRIMIR : RESPRINT PARABRE EXPRESION PARCIERRA PTCOMA {$$=new impresion.default($3,@1.first_line,@1.first_column);}
 ;
 
-EXPRESION : EXPRESION MAS EXPRESION {$$ = new operacion.default(Tipo.tipoDato.SUMA, $1, $3, @1.first_line, @1.first_column)}
-          | EXPRESION MENOS EXPRESION {}
-          | IDENTIFICADOR {$$ = new operacion.default(Tipo.tipoDato.IDENTIFICADOR, $1, @1.first_line, @1.first_column);}
-          | ENTERO {$$= new operacion.default(Tipo.tipoDato.ENTERO,$1, @1.first_line, @1.first_column);}
-          | CADENA {$$= new operacion.default(Tipo.tipoDato.CADENA,$1, @1.first_line, @1.first_column);}
+EXPRESION :
+            EXPRESION MAS EXPRESION {$$ = new aritmetico.default(aritmetico.tipoOp.SUMA, $1, $3, @1.first_line, @1.first_column)}
+          | IDENTIFICADOR {$$ = new nativo.default(new Tipo.default(Tipo.tipoDato.IDENTIFICADOR), $1, @1.first_line, @1.first_column);}
+          | ENTERO {$$= new nativo.default(new Tipo.default(Tipo.tipoDato.ENTERO),$1, @1.first_line, @1.first_column);}
+          | CADENA {$$= new nativo.default(new Tipo.default(Tipo.tipoDato.CADENA),$1, @1.first_line, @1.first_column);}
 ;

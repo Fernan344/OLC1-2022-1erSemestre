@@ -1,9 +1,9 @@
 import { Instruccion } from '../abstracto/Instruccion';
-import Operacion from '../expresiones/Operacion';
+import Operacion from '../expresiones/Nativo';
 import Arbol from '../simbolo/Arbol';
 import Simbolo from '../simbolo/Simbolo';
 import tablaSimbolo from '../simbolo/tablaSimbolo';
-import Tipo, { tipoDato } from '../simbolo/Tipo';
+import Tipo, {tipoDato} from '../simbolo/Tipo';
 
 export default class Declaracion extends Instruccion {
     private id: String;
@@ -11,7 +11,7 @@ export default class Declaracion extends Instruccion {
     private valor: Operacion;
 
     constructor(id: String, tipo: Tipo, valor: Operacion, linea: number, columna: number) {
-        super(linea, columna);
+        super(new Tipo(tipoDato.INDEFINIDO), linea, columna);
         this.id = id;
         this.tipo = tipo;
         this.valor = valor;

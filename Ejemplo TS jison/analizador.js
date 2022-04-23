@@ -72,12 +72,12 @@
   }
 */
 var analizador = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,7],$V1=[1,6],$V2=[1,9],$V3=[1,8],$V4=[2,5,9,11,15],$V5=[1,16],$V6=[1,17],$V7=[1,18],$V8=[1,21],$V9=[1,22],$Va=[10,17,18,19];
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,7],$V1=[1,6],$V2=[1,9],$V3=[1,8],$V4=[2,5,9,11,15],$V5=[1,16],$V6=[1,17],$V7=[1,18],$V8=[1,21],$V9=[10,17,18];
 var parser = {trace: function trace () { },
 yy: {},
-symbols_: {"error":2,"INIT":3,"INSTRUCCIONES":4,"EOF":5,"INSTRUCCION":6,"IMPRIMIR":7,"DECLARACION":8,"INVALID":9,"PTCOMA":10,"RESINT":11,"IDENTIFICADOR":12,"IGUAL":13,"EXPRESION":14,"RESPRINT":15,"PARABRE":16,"PARCIERRA":17,"MAS":18,"MENOS":19,"ENTERO":20,"CADENA":21,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"EOF",9:"INVALID",10:"PTCOMA",11:"RESINT",12:"IDENTIFICADOR",13:"IGUAL",15:"RESPRINT",16:"PARABRE",17:"PARCIERRA",18:"MAS",19:"MENOS",20:"ENTERO",21:"CADENA"},
-productions_: [0,[3,2],[4,2],[4,1],[6,1],[6,1],[6,1],[6,2],[8,5],[7,5],[14,3],[14,3],[14,1],[14,1],[14,1]],
+symbols_: {"error":2,"INIT":3,"INSTRUCCIONES":4,"EOF":5,"INSTRUCCION":6,"IMPRIMIR":7,"DECLARACION":8,"INVALID":9,"PTCOMA":10,"RESINT":11,"IDENTIFICADOR":12,"IGUAL":13,"EXPRESION":14,"RESPRINT":15,"PARABRE":16,"PARCIERRA":17,"MAS":18,"ENTERO":19,"CADENA":20,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"EOF",9:"INVALID",10:"PTCOMA",11:"RESINT",12:"IDENTIFICADOR",13:"IGUAL",15:"RESPRINT",16:"PARABRE",17:"PARCIERRA",18:"MAS",19:"ENTERO",20:"CADENA"},
+productions_: [0,[3,2],[4,2],[4,1],[6,1],[6,1],[6,1],[6,2],[8,5],[7,5],[14,3],[14,1],[14,1],[14,1]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -107,18 +107,21 @@ break;
 case 9:
 this.$=new impresion.default($$[$0-2],_$[$0-4].first_line,_$[$0-4].first_column);
 break;
+case 10:
+this.$ = new aritmetico.default(aritmetico.tipoOp.SUMA, $$[$0-2], $$[$0], _$[$0-2].first_line, _$[$0-2].first_column)
+break;
+case 11:
+this.$ = new nativo.default(new Tipo.default(Tipo.tipoDato.IDENTIFICADOR), $$[$0], _$[$0].first_line, _$[$0].first_column);
+break;
 case 12:
-this.$ = new operacion.default(Tipo.tipoDato.IDENTIFICADOR, $$[$0], _$[$0].first_line, _$[$0].first_column);
+this.$= new nativo.default(new Tipo.default(Tipo.tipoDato.ENTERO),$$[$0], _$[$0].first_line, _$[$0].first_column);
 break;
 case 13:
-this.$= new operacion.default(Tipo.tipoDato.ENTERO,$$[$0], _$[$0].first_line, _$[$0].first_column);
-break;
-case 14:
-this.$= new operacion.default(Tipo.tipoDato.CADENA,$$[$0], _$[$0].first_line, _$[$0].first_column);
+this.$= new nativo.default(new Tipo.default(Tipo.tipoDato.CADENA),$$[$0], _$[$0].first_line, _$[$0].first_column);
 break;
 }
 },
-table: [{2:$V0,3:1,4:2,6:3,7:4,8:5,9:$V1,11:$V2,15:$V3},{1:[3]},{2:$V0,5:[1,10],6:11,7:4,8:5,9:$V1,11:$V2,15:$V3},o($V4,[2,3]),o($V4,[2,4]),o($V4,[2,5]),o($V4,[2,6]),{10:[1,12]},{16:[1,13]},{12:[1,14]},{1:[2,1]},o($V4,[2,2]),o($V4,[2,7]),{12:$V5,14:15,20:$V6,21:$V7},{13:[1,19]},{17:[1,20],18:$V8,19:$V9},o($Va,[2,12]),o($Va,[2,13]),o($Va,[2,14]),{12:$V5,14:23,20:$V6,21:$V7},{10:[1,24]},{12:$V5,14:25,20:$V6,21:$V7},{12:$V5,14:26,20:$V6,21:$V7},{10:[1,27],18:$V8,19:$V9},o($V4,[2,9]),o($Va,[2,10]),o($Va,[2,11]),o($V4,[2,8])],
+table: [{2:$V0,3:1,4:2,6:3,7:4,8:5,9:$V1,11:$V2,15:$V3},{1:[3]},{2:$V0,5:[1,10],6:11,7:4,8:5,9:$V1,11:$V2,15:$V3},o($V4,[2,3]),o($V4,[2,4]),o($V4,[2,5]),o($V4,[2,6]),{10:[1,12]},{16:[1,13]},{12:[1,14]},{1:[2,1]},o($V4,[2,2]),o($V4,[2,7]),{12:$V5,14:15,19:$V6,20:$V7},{13:[1,19]},{17:[1,20],18:$V8},o($V9,[2,11]),o($V9,[2,12]),o($V9,[2,13]),{12:$V5,14:22,19:$V6,20:$V7},{10:[1,23]},{12:$V5,14:24,19:$V6,20:$V7},{10:[1,25],18:$V8},o($V4,[2,9]),o($V9,[2,10]),o($V4,[2,8])],
 defaultActions: {10:[2,1]},
 parseError: function parseError (str, hash) {
     if (hash.recoverable) {
@@ -370,7 +373,8 @@ _handle_error:
 
 //codigo js
 const inicio = require('../../controllers/indexControllers');
-const operacion = require('./expresiones/Operacion');
+const nativo = require('./expresiones/Nativo');
+const aritmetico = require('./expresiones/Aritmetico');
 const Tipo = require('./simbolo/Tipo');
 const impresion = require('./instrucciones/Imprimir');
 const declaracion = require('./instrucciones/Declaracion')
@@ -714,7 +718,7 @@ case 4:return 17;
 break;
 case 5:return 18;
 break;
-case 6:return 19;
+case 6:return 'MENOS';
 break;
 case 7:return 13;
 break;
@@ -726,9 +730,9 @@ case 10:
 break;
 case 11:
 break;
-case 12: yy_.yytext=yy_.yytext.substr(1,yy_.yyleng-2); return 21; 
+case 12: yy_.yytext=yy_.yytext.substr(1,yy_.yyleng-2); return 20; 
 break;
-case 13:return 20;
+case 13:return 19;
 break;
 case 14:return 12;
 break;

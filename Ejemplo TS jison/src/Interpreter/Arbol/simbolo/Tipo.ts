@@ -16,6 +16,5 @@ export enum tipoDato {
   ENTERO,
   CADENA,
   IDENTIFICADOR,
-  SUMA,
   INDEFINIDO
 }
